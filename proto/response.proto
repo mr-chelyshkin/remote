@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package pb;
+option go_package = "./pb";
+
+// For generate proto:
+// $ protoc -I proto --go_out=plugins=grpc:. proto/response.proto
+
+message Response {
+  string message = 1;
+  bool   ok      = 2;
+}

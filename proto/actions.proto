@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package pb;
+option go_package = "./pb";
+
+import "response.proto";
+import "request.proto";
+
+// For generate proto:
+// $ protoc -I proto --go_out=plugins=grpc:. proto/actions.proto
+
+service Transport {
+  rpc UploadFile (stream TransportData) returns (Response) {}
+
+  rpc UploadLink (TransportData) returns (Response) {}
+  rpc UploadDir  (TransportData) returns (Response) {}
+}
